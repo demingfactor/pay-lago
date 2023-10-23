@@ -1,4 +1,10 @@
+require "pay/lago/version"
 require "pay/lago/engine"
+
+require "lago-ruby-client"
+
+require "action_mailer"
+require "active_support"
 
 module Pay
   module Lago

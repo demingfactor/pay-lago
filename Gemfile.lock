@@ -1,7 +1,17 @@
+GIT
+  remote: https://github.com/thoughtbot/appraisal.git
+  revision: feb78bcc6177038399bff098cb6c2bd4bca4972a
+  specs:
+    appraisal (2.5.0)
+      bundler
+      rake
+      thor (>= 0.14.0)
+
 PATH
   remote: .
   specs:
     pay-lago (0.1.0)
+      lago-ruby-client (= 0.50.0.pre.beta)
       pay (~> 6.8)
 
 GEM
@@ -80,27 +90,38 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    addressable (2.8.5)
+      public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     base64 (0.1.1)
     bigdecimal (3.1.4)
     builder (3.2.4)
+    byebug (11.1.3)
+    childprocess (4.1.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     date (3.3.3)
-    diff-lcs (1.5.0)
     drb (2.1.1)
       ruby2_keywords
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashdiff (1.0.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    iniparse (1.5.0)
     io-console (0.6.0)
     irb (1.8.3)
       rdoc
       reline (>= 0.3.8)
     json (2.6.3)
+    jwt (2.7.1)
+    lago-ruby-client (0.50.0.pre.beta)
+      jwt
+      openssl
     language_server-protocol (3.17.0.3)
     lint_roller (1.1.0)
     loofah (2.21.4)
@@ -112,8 +133,11 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
+    matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.20.0)
+    mocha (2.1.0)
+      ruby2_keywords (>= 0.0.5)
     mutex_m (0.1.2)
     net-imap (0.4.1)
       date
@@ -127,14 +151,26 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
+    openssl (3.2.0)
+    overcommit (0.60.0)
+      childprocess (>= 0.6.3, < 5)
+      iniparse (~> 1.4)
+      rexml (~> 3.2)
     parallel (1.23.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
     pay (6.8.1)
       rails (>= 6.0.0)
+    pdf-core (0.9.0)
+    prawn (2.4.0)
+      pdf-core (~> 0.9.0)
+      ttfunk (~> 1.7)
+    prawn-table (0.2.2)
+      prawn (>= 1.3.0, < 3.0.0)
     psych (5.1.1.1)
       stringio
+    public_suffix (5.0.3)
     racc (1.7.1)
     rack (3.0.8)
     rack-session (2.0.0)
@@ -177,23 +213,13 @@ GEM
     rake (13.0.6)
     rdoc (6.5.0)
       psych (>= 4.0.0)
+    receipts (2.2.0)
+      prawn (>= 1.3.0, < 3.0.0)
+      prawn-table (~> 0.2.1)
     regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
     rexml (3.2.6)
-    rspec (3.12.0)
-      rspec-core (~> 3.12.0)
-      rspec-expectations (~> 3.12.0)
-      rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.2)
-      rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.3)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.6)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
-    rspec-support (3.12.1)
     rubocop (1.56.4)
       base64 (~> 0.1.1)
       json (~> 2.3)
@@ -213,6 +239,7 @@ GEM
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    sqlite3 (1.6.6-x86_64-linux)
     standard (1.31.2)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -228,9 +255,15 @@ GEM
     stringio (3.0.8)
     thor (1.2.2)
     timeout (0.4.0)
+    ttfunk (1.7.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    vcr (6.2.0)
+    webmock (3.19.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.8.1)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -241,10 +274,19 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  appraisal!
+  byebug
+  matrix
+  minitest (~> 5.20.0)
+  mocha
+  overcommit
   pay-lago!
   rake (~> 13.0)
-  rspec (~> 3.0)
+  receipts
+  sqlite3 (~> 1.6.0.rc2)
   standard (~> 1.3)
+  vcr
+  webmock
 
 BUNDLED WITH
    2.4.6

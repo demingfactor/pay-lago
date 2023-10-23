@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+lago:
+  owner: lago (User)
+  processor: lago
+  processor_id: gid://dummy/Pay::Customer/772847388
+  default: true

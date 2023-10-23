@@ -1,0 +1,11 @@
+# User with no payment processors
+none:
+  email: none@example.org
+  first_name: None
+  last_name: User
+
+# User with lago_processor payment processor
+lago:
+  email: lago@example.org
+  first_name: Lago
+  last_name: User
