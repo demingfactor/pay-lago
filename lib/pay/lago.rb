@@ -26,6 +26,10 @@ module Pay
       autoload :SubscriptionTerminated, "pay/lago/webhooks/subscription_terminated"
     end
 
+    module Providers
+      autoload :Stripe, "pay/lago/providers/stripe"
+    end
+
     extend Pay::Env
 
     class << self

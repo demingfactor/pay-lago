@@ -11,7 +11,7 @@ PATH
   remote: .
   specs:
     pay-lago (0.1.0)
-      lago-ruby-client (= 0.50.0.pre.beta)
+      lago-ruby-client (= 0.52.2.pre.beta)
       pay (~> 6.8)
 
 GEM
@@ -119,7 +119,7 @@ GEM
       reline (>= 0.3.8)
     json (2.6.3)
     jwt (2.7.1)
-    lago-ruby-client (0.50.0.pre.beta)
+    lago-ruby-client (0.52.2.pre.beta)
       jwt
       openssl
     language_server-protocol (3.17.0.3)

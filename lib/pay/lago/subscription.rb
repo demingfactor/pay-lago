@@ -23,7 +23,7 @@ module Pay
         to: :pay_subscription
 
       def self.sync(customer_id, subscription_id, object: nil, try: 0, retries: 1)
-        object ||= get_subscription(customer_id, subscription_id)
+        object ||= Pay::Lago.client.subscriptions.get(subscription_id)
 
         pay_customer = Pay::Customer.find_by(processor: :lago, processor_id: customer_id)
         if pay_customer.blank?
@@ -60,25 +60,19 @@ module Pay
         end
       end
 
-      def self.get_subscription(customer_id, external_id)
-        result = Lago.client.subscriptions.get_all(external_customer_id: customer_id, per_page: 9223372036854775807)
-        result.subscriptions.each { |sub| return sub if sub.external_id == external_id }
-        raise Pay::Lago::Error.new("No subscription could be found.")
-      rescue ::Lago::Api::HttpError => e
-        raise Pay::Lago::Error, e
-      end
-
       def initialize(pay_subscription)
         @pay_subscription = pay_subscription
       end
 
-      def subscription
-        @lago_subscription ||= self.class.get_subscription(pay_subscription.customer.processor_id, processor_id)
+      def subscription(reload: false)
+        @lago_subscription = nil if reload
+        @lago_subscription ||= Pay::Lago.client.subscriptions.get(processor_id)
       end
 
       def cancel(**options)
         customer_id = subscription.external_customer_id
-        response = Lago.client.subscriptions.destroy(URI.encode_www_form_component(processor_id), options: options)
+        encoded_id = URI.encode_www_form_component(processor_id)
+        response = Lago.client.subscriptions.destroy(encoded_id, options: options)
         self.class.sync(customer_id, processor_id, object: response)
       rescue ::Lago::Api::HttpError => e
         raise Pay::Lago::Error, e
@@ -117,7 +111,7 @@ module Pay
         customer_id = subscription.external_customer_id
         attributes = options.merge(
           external_customer_id: customer_id,
-          external_id: processor_id, plan_code: plan
+          external_id: processor_id, plan_code: plan.to_s
         )
         new_subscription = Lago.client.subscriptions.create(attributes)
         self.class.sync(customer_id, processor_id, object: new_subscription)
