@@ -8,11 +8,11 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer 155ed033-8716-4587-9ac6-fed8ddae3317
+      - Bearer <LAGO_API_KEY>
       Content-Type:
       - application/json
       User-Agent:
-      - Lago Ruby v0.44.0-beta
+      - Lago Ruby v0.52.2-beta
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -37,35 +37,35 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"af429c6f51b25054dd9b23522b77d57d"
+      - W/"97cba9d09cf8d9e47b2eb5e9e4d3f468"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - f7a205a7-4b21-4e1b-bc84-35a42e2bf180
+      - e21f3b01-ba9c-4c0e-9b3b-e55628b395f1
       X-Runtime:
-      - '0.033996'
+      - '0.009260'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"customer":{"lago_id":"c8bb805a-590c-444f-ae14-66589764f273","external_id":"gid://dummy/Pay::Customer/772847388","name":"Lago
-        User","sequential_id":4,"slug":"AMO-FBCD-004","created_at":"2023-09-18T06:42:57Z","updated_at":"2023-09-18T06:43:11Z","country":null,"address_line1":null,"address_line2":null,"state":null,"zipcode":null,"email":"test@example.com","city":null,"url":null,"phone":null,"logo_url":null,"legal_name":null,"legal_number":null,"currency":"USD","tax_identification_number":null,"timezone":null,"applicable_timezone":"UTC","net_payment_term":null,"external_salesforce_id":null,"billing_configuration":{"invoice_grace_period":null,"payment_provider":null,"vat_rate":null,"document_locale":null},"metadata":[],"taxes":[]}}'
-  recorded_at: Wed, 20 Sep 2023 03:17:30 GMT
+      string: '{"customer":{"lago_id":"f8186952-5b73-480b-96ac-af4c7c953344","external_id":"gid://dummy/Pay::Customer/772847388","name":"Lago
+        User","sequential_id":3,"slug":"AMO-15BA-003","created_at":"2023-11-07T23:51:03Z","updated_at":"2023-12-11T04:52:33Z","country":null,"address_line1":null,"address_line2":null,"state":null,"zipcode":null,"email":"lago@example.org","city":null,"url":null,"phone":null,"logo_url":null,"legal_name":null,"legal_number":null,"currency":"USD","tax_identification_number":null,"timezone":null,"applicable_timezone":"UTC","net_payment_term":null,"external_salesforce_id":null,"billing_configuration":{"invoice_grace_period":null,"payment_provider":"stripe","vat_rate":null,"document_locale":null,"provider_customer_id":"x","provider_payment_methods":["card"]},"metadata":[],"taxes":[]}}'
+  recorded_at: Mon, 11 Dec 2023 06:07:17 GMT
 - request:
     method: post
     uri: http://localhost:3000/api/v1/subscriptions
     body:
       encoding: UTF-8
-      string: '{"subscription":{"external_customer_id":"gid://dummy/Pay::Customer/772847388","plan_code":"default","name":"default","external_id":"gid://dummy/Pay::Subscription/913727099"}}'
+      string: '{"subscription":{"external_customer_id":"gid://dummy/Pay::Customer/772847388","plan_code":"default","name":"default","external_id":"gid://dummy/Pay::Subscription/2"}}'
     headers:
       Authorization:
-      - Bearer 155ed033-8716-4587-9ac6-fed8ddae3317
+      - Bearer <LAGO_API_KEY>
       Content-Type:
       - application/json
       User-Agent:
-      - Lago Ruby v0.44.0-beta
+      - Lago Ruby v0.52.2-beta
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -90,19 +90,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"fb3fb93434e12318f7063defd93d7c68"
+      - W/"a40b5ae362acd75fd3cb1682b457acac"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - f80ecaaf-32b4-443d-8483-5b0f7dc3c500
+      - 57ff4a45-d60c-4ace-8743-38149f3d95a3
       X-Runtime:
-      - 0.019934
+      - '0.038634'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"subscription":{"lago_id":"4a849692-2b6d-48cc-a3f4-02c03a004b3b","external_id":"gid://dummy/Pay::Subscription/913727099","lago_customer_id":"c8bb805a-590c-444f-ae14-66589764f273","external_customer_id":"gid://dummy/Pay::Customer/772847388","name":"default","plan_code":"default","status":"active","billing_time":"calendar","subscription_at":"2023-09-19T00:47:59Z","started_at":"2023-09-19T00:47:59Z","terminated_at":null,"canceled_at":null,"created_at":"2023-09-19T00:47:59Z","previous_plan_code":null,"next_plan_code":null,"downgrade_plan_date":null,"subscription_date":"2023-09-19"}}'
-  recorded_at: Wed, 20 Sep 2023 03:17:30 GMT
+      string: '{"subscription":{"lago_id":"57d6887f-b67b-4572-9dac-1bb4b62a90c9","external_id":"gid://dummy/Pay::Subscription/2","lago_customer_id":"f8186952-5b73-480b-96ac-af4c7c953344","external_customer_id":"gid://dummy/Pay::Customer/772847388","name":"default","plan_code":"default","status":"active","billing_time":"calendar","subscription_at":"2023-12-11T06:07:16Z","started_at":"2023-12-11T06:07:16Z","ending_at":null,"terminated_at":null,"canceled_at":null,"created_at":"2023-12-11T06:07:16Z","previous_plan_code":null,"next_plan_code":null,"downgrade_plan_date":null,"subscription_date":"2023-12-11","plan":{"lago_id":"53e656cc-7d9e-433a-9494-7beb33164c1c","name":"Default","invoice_display_name":null,"created_at":"2023-12-11T04:51:50Z","code":"default","interval":"monthly","description":"","amount_cents":100,"amount_currency":"USD","trial_period":0.0,"pay_in_advance":false,"bill_charges_monthly":null,"customers_count":1,"active_subscriptions_count":1,"draft_invoices_count":0,"parent_id":null,"charges":[],"taxes":[]}}}'
+  recorded_at: Mon, 11 Dec 2023 06:07:17 GMT
 recorded_with: VCR 6.2.0

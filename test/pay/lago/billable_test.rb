@@ -33,7 +33,7 @@ class Pay::Lago::Billable::Test < ActiveSupport::TestCase
 
   test "add payment method to lago" do
     assert_difference "Pay::PaymentMethod.count" do
-      @pay_customer.add_payment_method("x", default: true)
+      @pay_customer.add_payment_method(:stripe, "x", default: true)
     end
 
     payment_method = @pay_customer.default_payment_method

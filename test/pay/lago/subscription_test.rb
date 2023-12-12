@@ -35,11 +35,9 @@ class Pay::Lago::Subscription::Test < ActiveSupport::TestCase
   end
 
   test "lago processor swap" do
-    travel_to Date.parse("2023-09-18") do
-      @subscription.swap("another_plan")
-      assert_equal @subscription.changing_plan?, true
-      assert_equal @subscription.subscription.next_plan_code, "another_plan"
-    end
+    @subscription.swap("another_plan")
+    @subscription.subscription(reload: true)
+    assert_equal @subscription.subscription.plan.code, "another_plan"
   end
 
   test "lago cannot change quantity" do
