@@ -71,8 +71,7 @@ module Pay
 
       def cancel(**options)
         customer_id = subscription.external_customer_id
-        encoded_id = URI.encode_www_form_component(processor_id)
-        response = Lago.client.subscriptions.destroy(encoded_id, options: options)
+        response = Lago.client.subscriptions.destroy(processor_id, options: options)
         self.class.sync(customer_id, processor_id, object: response)
       rescue ::Lago::Api::HttpError => e
         raise Pay::Lago::Error, e

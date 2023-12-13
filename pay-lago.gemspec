@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "pay", "~> 6.8"
-  spec.add_dependency "lago-ruby-client", "0.52.2-beta"
+  spec.add_dependency "lago-ruby-client", "0.53.0-beta"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
