@@ -63,9 +63,6 @@ for direct use of the [Lago API](https://docs.getlago.com/api-reference/intro).
 
 The client instance can be accessed from `Pay::Lago.client`.
 
-#### Please Note:
-For any API calls that would use a GET, the external_id must be [URI encoded](https://ruby-doc.org/current/stdlibs/uri/URI.html#method-c-encode_www_form_component), as the lago-ruby-client gem does not currently do this itself. See [this issue](https://github.com/getlago/lago-ruby-client/issues/136).
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -74,7 +71,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pay-lago. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/pay-lago/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/demingfactor/pay-lago. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/demingfactor/pay-lago/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -82,4 +79,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Pay::Lago project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/pay-lago/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Pay::Lago project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/demingfactor/pay-lago/blob/master/CODE_OF_CONDUCT.md).

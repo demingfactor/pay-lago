@@ -117,11 +117,9 @@ module Pay
 
       def get_payment_method(provider, provider_id = nil)
         raise Pay::Lago::Error.new("Invalid provider!") unless Pay::Lago::PaymentMethod.valid_provider?(provider)
-        if provider_id.present?
-          Pay::PaymentMethod.find_by_lago_provider_and_id(provider, provider_id)
-        else
-          Pay::PaymentMethod.with_provider(provider).first
-        end
+        return Pay::PaymentMethod.find_by_lago_provider_and_id(provider, provider_id) if provider_id.present?
+        return pay_customer.default_payment_method if pay_customer.default_payment_method&.provider == provider
+        Pay::PaymentMethod.with_provider(provider).first
       end
 
       def add_payment_method(provider, provider_id, default: true, sync: true, options: {})
@@ -134,8 +132,8 @@ module Pay
           customer: pay_customer, data: options.merge(payment_provider: provider, provider_customer_id: provider_id)
         )
 
-        payment_method.make_default! if default || sync
-        payment_method.payment_processor.push! if sync
+        payment_method.make_default! if default
+        payment_method.payment_processor.push! if sync && default
 
         payment_method
       end
